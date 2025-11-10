@@ -61,6 +61,9 @@ class WebsocketPolicyServer:
                 action = self._policy.infer(obs)
                 infer_time = time.monotonic() - infer_time
 
+                if isinstance(action, tuple):
+                    action = action[0]
+
                 action["server_timing"] = {
                     "infer_ms": infer_time * 1000,
                 }
