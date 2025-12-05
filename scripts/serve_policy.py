@@ -108,7 +108,7 @@ def create_policy(args: Args) -> _policy.Policy:
 def main(args: Args) -> None:
     policy = create_policy(args)
     policy_metadata = policy.metadata
-    policy_metadata.policy_name = os.path.basename(args.policy.dir)
+    policy_metadata["policy_name"] = os.path.basename(args.policy.dir)
     # Record the policy's behavior.
     if args.record:
         policy = _policy.PolicyRecorder(policy, "policy_records")
